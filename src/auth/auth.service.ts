@@ -30,7 +30,7 @@ export class AuthService {
       delete user.hash;
 
       // return the saved user
-      return user;
+      return this.signToken(user.Id, user.email);
     } catch (e) {
       if (e instanceof PrismaClientKnownRequestError) {
         if (e.code === 'P2002') {
